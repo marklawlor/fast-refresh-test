@@ -11,9 +11,13 @@ import { observable } from "./observable";
 const getFamilyByType = Refresh.getFamilyByType;
 Object.assign(Refresh, {
   getFamilyByType(value) {
-    if ("default" in value && value.default.__test) {
-      return null;
-    } else if ("__test" in value) {
+    if (
+      (typeof value === "object" &&
+        "default" in value &&
+        "__prevent_fast_refresh_invalidation" in value.default) ||
+      (typeof value === "function" &&
+        "__prevent_fast_refresh_invalidation" in value)
+    ) {
       return null;
     }
 

@@ -11,4 +11,4 @@ export default function WrapJSX(jsx) {
   };
 }
 
-WrapJSX.__test = true;
+WrapJSX.__prevent_fast_refresh_invalidation = true;
