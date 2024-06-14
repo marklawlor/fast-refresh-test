@@ -1,14 +1,15 @@
-import { StatusBar } from "expo-status-bar";
 import { useState } from "react"
 import { StyleSheet, Text, View } from "react-native";
 
-export default function Component() {
+export default function MyComponent() {
   const [state, setState] = useState(0);
-  console.log("component")
   return (
     <View style={styles.container}>
-      <Text testID="test" onPress={() => setState(state => state + 1)}>{`Clicked ${state} 4`}</Text>
-      <StatusBar style="auto" />
+      <Text testID="test" onPress={() => {
+        setState(state => state + 1)
+      }}>{
+        `Component ${state}`
+      }</Text>
     </View>
   );
 }
